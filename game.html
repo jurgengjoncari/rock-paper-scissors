@@ -4,31 +4,33 @@
     <body>
         <script>
             var items = ["Rock", "Paper", "Scissors"];
-            computerPlay = () => items[Math.floor(Math.random() * tems.length)];
-            playerSelection = alert("Enter your selection: ");
-            computerSelection = computerPlay();
+            computerPlay = () => items[Math.floor(Math.random() * items.length)];
+            // computerSelection = computerPlay();
             beats = (item1, item2) => {
-                if (Set[item1, item2] == Set["Rock", "Scissors"]) {
+                if (new Set[item1, item2] == new Set["Rock", "Scissors"]) {
                     winner = "Rock";
                     loser = "Scissors";
+                    return [winner, loser];
                 }
-                else if (Set[item1, item2] == Set["Paper", "Rock"]) {
+                else if (new Set[item1, item2] == new Set["Paper", "Rock"]) {
                     winner = "Paper";
                     loser = "Rock";
+                    return [winner, loser];
                 }
-                else if (Set[item1, item2] == Set["Sissors", "Paper"]) {
-                    winner = "Paper";
-                    loser = "Rock";
+                else if (new Set[item1, item2] == new Set["Sissors", "Paper"]) {
+                    winner = "Scissors";
+                    loser = "Paper";
+                    return [winner, loser];
                 }
-                return `${winner} beats ${loser}`;
             }
-            playRound = (playerSelection, computerSelection) => {
-                if (playerSelection == "Rock" && computerSelection == "Scissors") {
-                    return "You win. "
+            playRound = (playerSelection) => {
+                beats(playerSelection, computerPlay());
+                if (playerSelection == winner) {
+                    winOrLose = "win";
+                } else {
+                    winOrLose = "lose";
                 }
-                `Paper beats rock`;
-                `Rock beats scissors`;
-                `Scissors beat paper`;
+                return `You ${winOrLose}. ${winner} beats ${loser}`;
             }
         </script>
     </body>
