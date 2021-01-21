@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            var items = ["Rock", "Paper", "Scissors"];
+            computerPlay = () => items[Math.floor(Math.random() * tems.length)];
+            playerSelection = alert("Enter your selection: ");
+            computerSelection = computerPlay();
+            beats = (item1, item2) => {
+                if (Set[item1, item2] == Set["Rock", "Scissors"]) {
+                    winner = "Rock";
+                    loser = "Scissors";
+                }
+                else if (Set[item1, item2] == Set["Paper", "Rock"]) {
+                    winner = "Paper";
+                    loser = "Rock";
+                }
+                else if (Set[item1, item2] == Set["Sissors", "Paper"]) {
+                    winner = "Paper";
+                    loser = "Rock";
+                }
+                return `${winner} beats ${loser}`;
+            }
+            playRound = (playerSelection, computerSelection) => {
+                if (playerSelection == "Rock" && computerSelection == "Scissors") {
+                    return "You win. "
+                }
+                `Paper beats rock`;
+                `Rock beats scissors`;
+                `Scissors beat paper`;
+            }
+        </script>
+    </body>
+</html>
