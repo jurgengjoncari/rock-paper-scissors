@@ -4,11 +4,8 @@
     <body>
         <script>
             var items = ["Rock", "Paper", "Scissors"];
-            // Choose a random item for the computer
+            // Choose a random item for the Computer
             computerPlay = () => items[Math.floor(Math.random() * items.length)];
-            let computerSelection = computerPlay();
-            // Get input from the user
-            playerSelection = prompt("Enter your selection: ");
             // Compare two sets in general
             eqSet = (set1, set2) => {
                 if (set1.size !== set2.size) return false;
@@ -16,27 +13,24 @@
                 return true;
             }
             // What beats what
+            what = [["Rock", "Scissors"], ["Scissors", "Paper"], ["Paper", "Rock"]]
             beats = (item1, item2) => {
-                if (eqSet(new Set([item1, item2]), new Set(["Rock", "Scissors"]))) {
-                    winner = "Rock";
-                    loser = "Scissors";
-                }
-                else if (eqSet(new Set([item1, item2]), new Set(["Scissors", "Paper"]))) {
-                    winner = "Scissors";
-                    loser = "Paper";
-                }
-                else if (eqSet(new Set([item1, item2]), new Set(["Paper", "Rock"]))) {
-                    winner = "Paper";
-                    loser = "Rock";
+                for (let i = 0; i < 3; i++) {
+                    if (eqSet(new Set([item1, item2]), new Set(what[i]))) {
+                        const winner = what[i][0];
+                        const loser = what[i][1];
+                    }
                 }
             }
             // Play one round
-            playRound = (selection1, selection2) => {
-                beats(selection1, selection2);
-                if (selection1.toLowerCase() == winner.toLowerCase()) {
+            playRound = () => {
+                playerSelection = prompt("Enter your selection: ");
+                computerSelection = computerPlay();
+                beats(playerSelection, computerSelection);
+                if (playerSelection.toLowerCase() == winner.toLowerCase()) {
                     winOrLose = "win";
                 }
-                else if (selection1.toLowerCase() == loser.toLowerCase()) {
+                else if (playerSelection.toLowerCase() == loser.toLowerCase()) {
                     winOrLose = "lose";
                 }
                 return `You ${winOrLose}! ${winner} beats ${loser}`;
@@ -46,20 +40,20 @@
                 let countPlayer = 0;
                 let countComputer = 0;
                 for (let i = 0; i < 5; i++) {
-                    playRound(playerSelection, computerSelection);
+                    playRound();
                     if (winOrLose = "win") {
                         countPlayer++;
                     } else {
                         countComputer++;
                     }
-                    console.log(playRound(playerSelection, computerSelection));
+                    console.log(playRound());
                 }
                 if (countPlayer > countComputer) {
-                    winner = "You are the winner!"
+                    gameWinner = "You are the winner!"
                 } else {
-                    winner = "The computer is the winner!"
+                    gameWinner = "The computer is the winner!"
                 }
-                console.log(winner);
+                console.log(gameWinner);
             }
         </script>
     </body>
