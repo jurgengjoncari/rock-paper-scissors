@@ -4,7 +4,7 @@
     <body>
         <script>
             var items = ["Rock", "Paper", "Scissors"];
-            // Choose a random item for the Computer
+            // Choose a random item for the computer
             computerPlay = () => items[Math.floor(Math.random() * items.length)];
             // Compare two sets in general
             eqSet = (set1, set2) => {
@@ -12,48 +12,73 @@
                 for (let a of set1) if (!set2.has(a)) return false;
                 return true;
             }
-            // What beats what
-            what = [["Rock", "Scissors"], ["Scissors", "Paper"], ["Paper", "Rock"]]
+            // Possible combinations
+            combinations = [["rock", "scissors"], ["scissors", "paper"], ["paper", "rock"]]
+            // Which item beats which item / The rules of the game
             beats = (item1, item2) => {
-                for (let i = 0; i < 3; i++) {
-                    if (eqSet(new Set([item1, item2]), new Set(what[i]))) {
-                        const winner = what[i][0];
-                        const loser = what[i][1];
+                item1 = item1.toLowerCase();
+                item2 = item2.toLowerCase();
+                if (item1 == item2) {
+                    result = "tie";
+                    return result;
+                } else {
+                    if (eqSet(new Set([item1, item2]), new Set(["rock", "scissors"]))) {
+                        winner = "Rock";
+                        because = "Rock crushes Scissors. "
                     }
+                    else if (eqSet(new Set([item1, item2]), new Set(["scissors", "paper"]))) {
+                        winner = "Scissors";
+                        because = "Scissors cut Paper. "
+                    }
+                    else if (eqSet(new Set([item1, item2]), new Set(["paper", "rock"]))) {
+                        winner = "Paper";
+                        because = "Paper covers Rock. "
+                    }
+                    result = [winner, because]; 
+                    return result;
                 }
             }
             // Play one round
             playRound = () => {
-                playerSelection = prompt("Enter your selection: ");
-                computerSelection = computerPlay();
-                beats(playerSelection, computerSelection);
-                if (playerSelection.toLowerCase() == winner.toLowerCase()) {
-                    winOrLose = "win";
+                let playerSelection = prompt("Enter your selection: ");
+                let computerSelection = computerPlay();
+                let result = beats(playerSelection, computerSelection);
+                if (result == "tie"){
+                    console.log("It's a tie! Choose again. ")
+                    playRound();
+                } else {
+                    if (playerSelection.toLowerCase() == winner.toLowerCase()) {
+                        winOrLose = "win";
+                    }
+                    else if (playerSelection.toLowerCase() != winner.toLowerCase()) {
+                        winOrLose = "lose";
+                        // playerSelection = loser;
+                    }
+                    return `You ${winOrLose}! ${result[1]}`;
                 }
-                else if (playerSelection.toLowerCase() == loser.toLowerCase()) {
-                    winOrLose = "lose";
-                }
-                return `You ${winOrLose}! ${winner} beats ${loser}`;
             }
             // Play five rounds
             game = () => {
-                let countPlayer = 0;
-                let countComputer = 0;
+                countPlayer = 0;
+                countComputer = 0;
                 for (let i = 0; i < 5; i++) {
-                    playRound();
+                    // playRound();
                     if (winOrLose = "win") {
-                        countPlayer++;
+                        countPlayer = countPlayer + 1;
                     } else {
-                        countComputer++;
+                        countComputer = countComputer + 1;
                     }
                     console.log(playRound());
                 }
                 if (countPlayer > countComputer) {
-                    gameWinner = "You are the winner!"
+                    outcome = "You are the winner!";
+                } 
+                else if (countPlayer < countComputer) {
+                    outcome = "The computer is the winner!";
                 } else {
-                    gameWinner = "The computer is the winner!"
+                    outcome = "It's a draw. ";
                 }
-                console.log(gameWinner);
+                console.log(outcome);
             }
         </script>
     </body>
