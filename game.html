@@ -3,7 +3,7 @@
     <head></head>
     <body>
         <script>
-            var items = ["Rock", "Paper", "Scissors"];
+            items = ["Rock", "Paper", "Scissors"];
             // Choose a random item for the computer
             computerPlay = () => items[Math.floor(Math.random() * items.length)];
             // Compare two sets in general
@@ -15,7 +15,7 @@
             // Possible combinations
             combinations = [["rock", "scissors"], ["scissors", "paper"], ["paper", "rock"]]
             // Which item beats which item / The rules of the game
-            beats = (item1, item2) => {
+            function beats(item1, item2) {
                 item1 = item1.toLowerCase();
                 item2 = item2.toLowerCase();
                 if (item1 == item2) {
@@ -39,7 +39,7 @@
                 }
             }
             // Play one round
-            playRound = () => {
+            function playRound() {
                 let playerSelection = prompt("Enter your selection: ");
                 let computerSelection = computerPlay();
                 let result = beats(playerSelection, computerSelection);
@@ -58,7 +58,7 @@
                 }
             }
             // Play five rounds
-            game = () => {
+            function game() {
                 countPlayer = 0;
                 countComputer = 0;
                 for (let i = 0; i < 5; i++) {
