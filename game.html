@@ -3,82 +3,74 @@
     <head></head>
     <body>
         <script>
-            items = ["Rock", "Paper", "Scissors"];
-            // Choose a random item for the computer
-            computerPlay = () => items[Math.floor(Math.random() * items.length)];
-            // Compare two sets in general
-            eqSet = (set1, set2) => {
-                if (set1.size !== set2.size) return false;
-                for (let a of set1) if (!set2.has(a)) return false;
-                return true;
-            }
-            // Possible combinations
-            combinations = [["rock", "scissors"], ["scissors", "paper"], ["paper", "rock"]]
-            // Which item beats which item / The rules of the game
-            function beats(item1, item2) {
-                item1 = item1.toLowerCase();
-                item2 = item2.toLowerCase();
-                if (item1 == item2) {
-                    result = "tie";
-                    return result;
+            Shapes = ["rock", "paper", "scissors"];
+
+            playerScore = 0;
+            computerScore = 0;
+
+            function playerPlay() {return shape = prompt("Choose a shape: ")}
+            function computerPlay() {return Shapes[Math.floor(Math.random() * 3)]}
+
+            function playRound(playerSelection, computerSelection) {
+                if (playerSelection == computerSelection) {
+                    return "Draw";
                 } else {
-                    if (eqSet(new Set([item1, item2]), new Set(["rock", "scissors"]))) {
-                        winner = "Rock";
-                        because = "Rock crushes Scissors. "
+                    if (playerSelection.toLowerCase() == "rock") {
+                        if (computerSelection == "paper") {
+                            return "You lose. Paper beats Rock";
+                        }
+                        else if (computerSelection == "scissors") {
+                            return "You win. Rock beats Scissors";
+                        }
                     }
-                    else if (eqSet(new Set([item1, item2]), new Set(["scissors", "paper"]))) {
-                        winner = "Scissors";
-                        because = "Scissors cut Paper. "
+                    else if (playerSelection.toLowerCase() == "paper") {
+                        if (computerSelection == "scissors") {
+                            return "You lose. Scissors beats Paper";
+                        }
+                        else if (computerSelection == "rock") {
+                            return "You win. Paper beats Rock";
+                        }
                     }
-                    else if (eqSet(new Set([item1, item2]), new Set(["paper", "rock"]))) {
-                        winner = "Paper";
-                        because = "Paper covers Rock. "
+                    else if (playerSelection.toLowerCase() == "scissors") {
+                        if (computerSelection == "rock") {
+                            return "You lose. Rock beats Scissors";
+                        }
+                        else if (computerSelection == "paper") {
+                            return "You win. Scissors beat Paper";
+                        }
                     }
-                    result = [winner, because]; 
-                    return result;
                 }
             }
-            // Play one round
-            function playRound() {
-                let playerSelection = prompt("Enter your selection: ");
-                let computerSelection = computerPlay();
-                let result = beats(playerSelection, computerSelection);
-                if (result == "tie"){
-                    console.log("It's a tie! Choose again. ")
-                    playRound();
-                } else {
-                    if (playerSelection.toLowerCase() == winner.toLowerCase()) {
-                        winOrLose = "win";
-                    }
-                    else if (playerSelection.toLowerCase() != winner.toLowerCase()) {
-                        winOrLose = "lose";
-                        // playerSelection = loser;
-                    }
-                    return `You ${winOrLose}! ${result[1]}`;
-                }
-            }
-            // Play five rounds
+            
             function game() {
-                countPlayer = 0;
-                countComputer = 0;
-                for (let i = 0; i < 5; i++) {
-                    // playRound();
-                    if (winOrLose = "win") {
-                        countPlayer = countPlayer + 1;
-                    } else {
-                        countComputer = countComputer + 1;
+                for (i = 0; i < 5; i++) {
+                    playerSelection = playerPlay();
+                    computerSelection = computerPlay();
+                    result = playRound(playerSelection, computerSelection);
+                    console.log(result);
+                    if (result != "It's a tie") {
+                        switch (result) {
+                            case "You win. Rock beats Scissors":
+                            case "You win. Paper beats Rock":
+                            case "You win. Scissors beat Paper":
+                                playerScore++;
+                                break;
+                            case "You lose. Paper beats Rock":
+                            case "You lose. Scissors beats Paper":
+                            case "You lose. Rock beats Scissors":
+                                computerScore++;
+                        }
                     }
-                    console.log(playRound());
                 }
-                if (countPlayer > countComputer) {
-                    outcome = "You are the winner!";
-                } 
-                else if (countPlayer < countComputer) {
-                    outcome = "The computer is the winner!";
+                if (playerScore != computerScore) {
+                    if (playerScore > computerScore) {
+                        console.log("You are the winner of the game"); 
+                    } else {
+                        console.log("Computer is the winner of the game"); 
+                    }
                 } else {
-                    outcome = "It's a draw. ";
+                    console.log("It's a tie"); 
                 }
-                console.log(outcome);
             }
         </script>
     </body>
