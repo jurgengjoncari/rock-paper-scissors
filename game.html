@@ -2,16 +2,25 @@
 <html>
     <head></head>
     <body>
-        <h1>Rock-Paper-Scissors</h1>
-        <h2>Open DevTools and type game();.</h2>
+        <div class="buttons">
+            <div class="button">
+                <button class="shape">Rock</button>
+            </div>
+            <div class="button">
+                <button class="shape">Paper</button>
+            </div>
+            <div class="button">
+                <button class="shape">Scissors</button>
+            </div>
+        </div>
         <script>
-            Shapes = ["rock", "paper", "scissors"];
+            shapes = ["rock", "paper", "scissors"];
 
             playerScore = 0;
             computerScore = 0;
 
             function playerPlay() {return shape = prompt("Choose a shape: ")}
-            function computerPlay() {return Shapes[Math.floor(Math.random() * 3)]}
+            function computerPlay() {return shapes[Math.floor(Math.random() * 3)]}
 
             function playRound(playerSelection, computerSelection) {
                 if (playerSelection == computerSelection) {
@@ -66,14 +75,16 @@
                 }
                 if (playerScore != computerScore) {
                     if (playerScore > computerScore) {
-                        console.log("You are the winner of the game"); 
+                        console.log("Condragulations! You are the winner of the game"); 
                     } else {
-                        console.log("Computer is the winner of the game"); 
+                        console.log("Better luck next time! Computer is the winner of the game"); 
                     }
                 } else {
                     console.log("It's a tie"); 
                 }
             }
+            
+            
         </script>
     </body>
 </html>
