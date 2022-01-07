@@ -1,4 +1,4 @@
-# rock-paper-scissors
-Rock-Paper-Scissors game for The Odin Project.
+# Rock Paper Scissors
+Rock Paper Scissors game for The Odin Project Fundamentals course.
 
-[Instructions](https://www.theodinproject.com/lessons/rock-paper-scissors)
+[The Instructions](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors).
