@@ -3,54 +3,38 @@ const shapes = ['rock', 'paper', 'scissors']
 let playerScore = 0
 let computerScore = 0
 
-function setPlayerSelection() {
-    return prompt('Choose a shape: ')
-}
-
-function getComputerSelection() {
-    return shapes[Math.floor(Math.random() * 3)]
-}
-
 function playRound() {
-    const playerSelection = setPlayerSelection()
-    const computerSelection = getComputerSelection()
-
     let winner = undefined
     let result = undefined
+
+    const playerSelection = prompt('Choose a shape: ', 'rock')
+    const computerSelection = shapes[Math.floor(Math.random() * 3)]
 
     if (playerSelection == computerSelection) {
         result = 'Draw'
     } else {
-        if (playerSelection.toLowerCase() == 'rock') {
-            if (computerSelection == 'paper') {
-                winner = false
-            }
-        } else if (playerSelection.toLowerCase() == 'paper') {
-            if (computerSelection == 'scissors') {
-                winner = false
-            }
-        } else if (playerSelection.toLowerCase() == 'scissors') {
-            if (computerSelection == 'rock') {
-                winner = false
-            }
-        } else {
-            winner = true
-        }
-        if (winner) {
-            playerScore++
-            result = `You win! ${playerSelection} beats ${computerSelection}.`
-        } else {
-            computerScore++
+        if (
+            (playerSelection.toLowerCase() == 'rock' &&
+                computerSelection == 'paper') ||
+            (playerSelection.toLowerCase() == 'paper' &&
+                computerSelection == 'scissors') ||
+            (playerSelection.toLowerCase() == 'scissors' &&
+                computerSelection == 'rock')
+        ) {
             result = `You lose! ${computerSelection} beats ${playerSelection}.`
+            playerScore++
+            winner = 'Computer'
+        } else {
+            result = `You win! ${playerSelection} beats ${computerSelection}.`
+            computerScore++
+            winner = 'Player'
         }
     }
     console.log(result)
     return winner
 }
 
-// playRound()
-
-function game() {
+;(function game() {
     let finalResult = undefined
 
     for (i = 0; i < 5; i++) {
@@ -70,9 +54,7 @@ function game() {
     console.log(`Player Score: ${playerScore}`)
     console.log(`Computer Score: ${computerScore}`)
     console.log(finalResult)
-}
 
-game()
-
-playerScore = 0
-computerScore = 0
+    playerScore = 0
+    computerScore = 0
+})()
