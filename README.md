@@ -11,4 +11,5 @@ Instructions:
 
 Some notes:
 
+- I've excluded the part where the game stops after reaching 5 points. 
 - I've included the SVG file inside the HTML because it was the only way to add interactivity to it. 
