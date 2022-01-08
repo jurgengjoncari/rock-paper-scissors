@@ -1,60 +1,42 @@
-const shapes = ['rock', 'paper', 'scissors']
+shapes = ['rock', 'paper', 'scissors']
 
 let playerScore = 0
 let computerScore = 0
 
-function playRound() {
-    let winner = undefined
+function playRound(playerSelection) {
     let result = undefined
 
-    const playerSelection = prompt('Choose a shape: ', 'rock')
     const computerSelection = shapes[Math.floor(Math.random() * 3)]
 
     if (playerSelection == computerSelection) {
-        result = 'Draw'
+        result = 'Draw.'
     } else {
         if (
-            (playerSelection.toLowerCase() == 'rock' &&
-                computerSelection == 'paper') ||
-            (playerSelection.toLowerCase() == 'paper' &&
-                computerSelection == 'scissors') ||
-            (playerSelection.toLowerCase() == 'scissors' &&
-                computerSelection == 'rock')
+            (playerSelection == 'rock' && computerSelection == 'paper') ||
+            (playerSelection == 'paper' && computerSelection == 'scissors') ||
+            (playerSelection == 'scissors' && computerSelection == 'rock')
         ) {
             result = `You lose! ${computerSelection} beats ${playerSelection}.`
-            playerScore++
-            winner = 'Computer'
+            computerScore++
+            computer.textContent = computerScore
         } else {
             result = `You win! ${playerSelection} beats ${computerSelection}.`
-            computerScore++
-            winner = 'Player'
+            playerScore++
+            player.textContent = playerScore
         }
     }
-    console.log(result)
-    return winner
+    resultLine.textContent = result
 }
 
-;(function game() {
-    let finalResult = undefined
+const resultLine = document.getElementById('result')
 
-    for (i = 0; i < 5; i++) {
-        playRound()
-    }
+const player = document.getElementById('player')
+const computer = document.getElementById('computer')
 
-    if (playerScore == computerScore) {
-        finalResult = "It's a tie"
-    } else {
-        if (playerScore > computerScore) {
-            finalResult = 'Condragulations! You are the winner of the game.'
-        } else {
-            finalResult =
-                'Better luck next time! Computer is the winner of the game.'
-        }
-    }
-    console.log(`Player Score: ${playerScore}`)
-    console.log(`Computer Score: ${computerScore}`)
-    console.log(finalResult)
+const rock = document.getElementById('rock')
+const paper = document.getElementById('paper')
+const scissors = document.getElementById('scissors')
 
-    playerScore = 0
-    computerScore = 0
-})()
+rock.addEventListener('click', () => playRound('rock'))
+paper.addEventListener('click', () => playRound('paper'))
+scissors.addEventListener('click', () => playRound('scissors'))

@@ -1,6 +1,50 @@
 /* General */
-html, body {
+html,
+body {
     height: 100%;
-    background-color: black;
+    background-color: #333;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
 }
+
+body {
+    margin: auto;
+    width: 85ch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 /* Content */
+header,
+#score {
+    width: 85ch;
+}
+
+header {
+    text-align: center;
+}
+
+#score {
+    display: flex;
+    justify-content: space-between;
+}
+
+header {
+    height: max-content;
+}
+
+svg {
+    white-space: nowrap;
+}
+
+#results {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: rgb(60, 60, 60);
+}
