@@ -2,6 +2,8 @@
 
 Rock-Paper-Scissors game for The Odin Project Fundamentals course.
 
+Live preview: https://jurgengjoncari.github.io/rock-paper-scissors/
+
 Instructions:
 
 1. [The logic](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors).
