@@ -1,48 +1,52 @@
 const choices = ['rock', 'paper', 'scissors']
 
-let playerScore = 0
-let computerScore = 0
-let result
-
-
-const playerScoreOutput = document.getElementById('playerScore')
-const computerScoreOutput = document.getElementById('computerScore')
-
-const resultLine = document.getElementById('result')
-
 // Get buttons
 const rock = document.getElementById('rock')
 const paper = document.getElementById('paper')
 const scissors = document.getElementById('scissors')
+
+let playerScore
+let computerScore
+
+initialize()
 
 // Event listeners for the buttons
 rock.addEventListener('click', () => playRound('rock'))
 paper.addEventListener('click', () => playRound('paper'))
 scissors.addEventListener('click', () => playRound('scissors'))
 
+function initialize() {
+    playerScore = 0
+    computerScore = 0
+}
+
 function determineWinner(userChoice, computerChoice) {
     if (userChoice == computerChoice) {
-        result += "It's a tie!"
+        return "It's a tie!"
     } else {
         if (
             (userChoice == 'rock' && computerChoice == 'paper') ||
             (userChoice == 'paper' && computerChoice == 'scissors') ||
             (userChoice == 'scissors' && computerChoice == 'rock')
         ) {
-            result += `You lose! ${computerChoice} beats ${userChoice}.`
             computerScore++
-            computerScoreOutput.textContent = computerScore
+            return `You lose - ${computerChoice} beats ${userChoice}.`
         } else {
-            result += `You win! ${userChoice} beats ${computerChoice}.`
             playerScore++
-            playerScoreOutput.textContent = playerScore
+            return `You win - ${userChoice} beats ${computerChoice}.`
         }
     }
 }
 
+function updateScoreDisplay() {
+    const playerScoreOutput = document.getElementById('playerScore')
+    const computerScoreOutput = document.getElementById('computerScore')
+    playerScoreOutput.textContent = playerScore
+    computerScoreOutput.textContent = computerScore
+}
+
 function playRound(userChoice) {
     const computerChoice = choices[Math.floor(Math.random() * 3)]
-    result = `You chose ${userChoice}, computer chose ${computerChoice}. `
-    determineWinner(userChoice, computerChoice)
-    resultLine.textContent = result
+    alert(`You chose ${userChoice}, computer chose ${computerChoice}. \n\n${determineWinner(userChoice, computerChoice)}`)
+    updateScoreDisplay()
 }
