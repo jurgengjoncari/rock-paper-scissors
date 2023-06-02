@@ -4,16 +4,19 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="color-scheme" content="dark" />
         <link rel="icon" href="data:;base64,=" />
         <link rel="stylesheet" href="./style.css" />
         <title>Rock Paper Scissors</title>
     </head>
     <body>
         <header>
-            <h1>Rock Paper Scissors</h1>
+            <h1 class="center-text">Rock Paper Scissors</h1>
         </header>
         <main>
-            <p>Make your choice: </p>
+            <header>
+                <h2 class="center-text">Make your choice: </h2>
+            </header>
             <svg
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -23,8 +26,9 @@
                 height="440"
                 preserveAspectRatio="xMinYMin meet"
                 xml:space="preserve"
+                class="center-inline-vertically"
             >
-                <g style="fill: white; stroke: white; stroke-width: 3">
+                <g style="fill: rgb(221, 221, 221); stroke: rgb(221, 221, 221); stroke-width: 3">
                     <path
                         style="fill: none"
                         d="M 205.041,366.998 c -44.333 -31.121 -74.01 -81.703 -76.621 -139.339"
@@ -50,7 +54,7 @@
                         points="382.591,61.921 382.884,59.942 395.845,61.852 387.144,52.058 388.638,50.73 400.988,64.631"
                     />
                 </g>
-                <g style="fill: none; stroke: #ffffff; stroke-width: 2.5">
+                <g style="fill: none; stroke: rgb(221, 221, 221); stroke-width: 2.5">
                     <g id="rock" class="button">
                         <circle fill="#800000" cx="307" cy="395" r="62" />
                         <path
@@ -104,7 +108,7 @@
                     style="
                         font-family: Arial, sans-serif;
                         text-anchor: middle;
-                        fill: white;
+                        fill: rgb(221, 221, 221);
                     "
                 >
                     <text transform="rotate(0)  translate(0 -130)">
@@ -127,18 +131,23 @@
                     </text>
                 </g>
             </svg>
-            <div id="score">
-                <span>
-                    Player:
-                    <output id="playerScore">0</output>
-                </span>
-                <span>
-                    Computer:
-                    <output id="computerScore">0</output>
-                </span>
-            </div>
+            <form id="score">
+                <fieldset>
+                    <legend>Score</legend>
+                    <div>
+                        <label for="playerScore">Player:</label>
+                        <output id="playerScore"></output>
+                    </div>
+                    <div>
+                        <label for="computerScore">Computer:</label>
+                        <output id="computerScore"></output>
+                    </div>
+                </fieldset>
+            </form>
         </main>
-        <footer><p>code repository</p></footer>
+        <footer class="center-text">
+            <a href="https://github.com/jurgengjoncari/rock-paper-scissors" target="_blank">View Code on GitHub</a>
+        </footer>
         <script src="./index.js"></script>
     </body>
 </html>

@@ -18,6 +18,7 @@ scissors.addEventListener('click', () => playRound('scissors'))
 function initialize() {
     playerScore = 0
     computerScore = 0
+    updateScoreOutput()
 }
 
 function determineWinner(userChoice, computerChoice) {
@@ -38,7 +39,7 @@ function determineWinner(userChoice, computerChoice) {
     }
 }
 
-function updateScoreDisplay() {
+function updateScoreOutput() {
     const playerScoreOutput = document.getElementById('playerScore')
     const computerScoreOutput = document.getElementById('computerScore')
     playerScoreOutput.textContent = playerScore
@@ -48,5 +49,5 @@ function updateScoreDisplay() {
 function playRound(userChoice) {
     const computerChoice = choices[Math.floor(Math.random() * 3)]
     alert(`You chose ${userChoice}, computer chose ${computerChoice}. \n\n${determineWinner(userChoice, computerChoice)}`)
-    updateScoreDisplay()
+    updateScoreOutput()
 }
