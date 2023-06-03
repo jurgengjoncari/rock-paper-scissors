@@ -31,7 +31,6 @@ body {
 fieldset {
     width: 100%;
     max-width: 85ch;
-    margin: auto;
 }
 
 #score {

@@ -72,7 +72,7 @@ class RockPaperScissors {
     }
 
     updateUI(userChoice, computerChoice, result) {
-        let title = `Round ${this.currentRound}/${this.MAX_ROUNDS}`
+        let title = `Round ${this.currentRound}`
         let description = `You chose ${userChoice}, Computer chose ${computerChoice}.`
 
         this.updateScoreOutputElements()
