@@ -38,6 +38,11 @@ fieldset {
     justify-content: space-between;
 }
 
+#player-score, #computer-score {
+    font-family: monospace;
+    font-size: 1rem;
+}
+
 header {
     height: max-content;
 }
